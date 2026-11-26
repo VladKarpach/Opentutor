@@ -72,7 +72,7 @@ export function DashboardEmptyState({
       </div>
       <h2 className="text-lg font-bold text-foreground">{t("dashboard.empty")}</h2>
       <p className="text-sm text-muted-foreground max-w-sm leading-relaxed">{t("dashboard.emptyDescription")}</p>
-      <button type="button" onClick={() => onNavigate("/setup?step=content")} className="h-11 px-7 bg-brand text-brand-foreground rounded-full text-sm font-medium hover:opacity-90 transition-all hover:shadow-md">
+      <button type="button" onClick={() => onNavigate("/new")} className="h-11 px-7 bg-brand text-brand-foreground rounded-full text-sm font-medium hover:opacity-90 transition-all hover:shadow-md">
         {t("dashboard.create")}
       </button>
     </div>

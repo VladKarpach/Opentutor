@@ -143,7 +143,7 @@ test.describe("Onboarding flow", () => {
   // ---- step navigation via query param ----------------------------------
 
   test("?step=content skips to content step", async ({ page }) => {
-    await page.goto("/setup?step=content");
+    await page.goto("/new");
     await expect(
       page.getByTestId("project-name-input")
         .or(page.getByText(/Upload|Drag|drop/i).first())
@@ -153,7 +153,7 @@ test.describe("Onboarding flow", () => {
   // ---- demo course option -----------------------------------------------
 
   test("demo course button is available on content step", async ({ page }) => {
-    await page.goto("/setup?step=content");
+    await page.goto("/new");
     await expect(
       page.getByRole("button", { name: /demo|try|sample/i })
         .or(page.getByText(/demo|try a sample/i).first())
@@ -184,7 +184,7 @@ test.describe("Onboarding flow", () => {
         await route.continue();
       }
     });
-    await page.goto("/setup?step=content");
+    await page.goto("/new");
     // Look for a skip/demo/empty button to bypass setup
     const skipBtn = page.getByRole("button", { name: /skip|demo|try|empty|start empty/i }).first();
     const skipVisible = await skipBtn.isVisible({ timeout: 5_000 }).catch(() => false);

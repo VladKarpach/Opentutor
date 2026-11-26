@@ -16,7 +16,7 @@ import {
 test.describe.serial("File upload", () => {
   test.beforeEach(async ({ page }) => {
     await skipOnboarding(page);
-    await page.goto("/setup?step=content");
+    await page.goto("/new");
     await expect(page.getByTestId("setup-file-input")).toBeAttached({ timeout: 15_000 });
   });
 
@@ -48,7 +48,7 @@ test.describe.serial("File upload", () => {
 test.describe.serial("URL input", () => {
   test.beforeEach(async ({ page }) => {
     await skipOnboarding(page);
-    await page.goto("/setup?step=content");
+    await page.goto("/new");
     await expect(page.getByTestId("setup-tab-url")).toBeVisible({ timeout: 15_000 });
     await page.getByTestId("setup-tab-url").click();
   });

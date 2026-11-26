@@ -327,19 +327,7 @@ export default function TasksPage() {
           )}
         </div>
 
-        {/* Keyboard hint */}
-        <div className="mt-6 flex items-center justify-between rounded-lg bg-muted/30 p-3 text-xs text-muted-foreground">
-          <span>
-            <kbd className="rounded bg-border px-1.5 py-0.5">1</kbd>{" · "}
-            <kbd className="rounded bg-border px-1.5 py-0.5">2</kbd>{" · "}
-            <kbd className="rounded bg-border px-1.5 py-0.5">3</kbd>{" · "}
-            <kbd className="rounded bg-border px-1.5 py-0.5">4</kbd>{" · "}
-            <kbd className="rounded bg-border px-1.5 py-0.5">5</kbd>
-          </span>
-          <span className="ml-2">
-            Горячие клавиши: переключить вкладку
-          </span>
-        </div>
+        
       </div>
     </div>
   );
@@ -698,13 +686,6 @@ function AheadTab() {
 
   return (
     <div className="space-y-4">
-      <div className="rounded-xl border border-border bg-muted/30 px-4 py-3 text-xs text-muted-foreground">
-        Задание можно взять с любого будущего дня. Исходное задание останется на
-        своём дне с половинным временем (минимум 5 мин), а сегодня появится его
-        копия с полным временем. Контрольные задания тоже можно брать; экзамен —
-        нельзя.
-      </div>
-
       {days.map(({ day, rows }) => (
         <section key={day} className="space-y-2">
           <h3 className="px-1 text-sm font-semibold text-foreground">
@@ -747,6 +728,12 @@ function AheadTab() {
           })}
         </section>
       ))}
+      <div className="rounded-xl border border-border bg-muted/30 px-4 py-3 text-xs text-muted-foreground">
+        Задание можно взять с любого будущего дня. Исходное задание останется на
+        своём дне с половинным временем (минимум 5 мин), а сегодня появится его
+        копия с полным временем. Контрольные задания тоже можно брать; экзамен —
+        нельзя.
+      </div>
     </div>
   );
 }
@@ -758,6 +745,7 @@ function CalendarTab() {
 
   return (
     <div className="h-[600px] flex flex-col">
+      <GlobalCalendar />
       <div className="flex items-center justify-between mb-3 px-2">
         <div className="flex items-center gap-2">
           <Badge variant="secondary" className="text-[10px] uppercase">
@@ -771,7 +759,6 @@ function CalendarTab() {
           Сменить режим
         </Button>
       </div>
-      <GlobalCalendar />
       <ModeSelectorModal open={modeModalOpen} onOpenChange={setModeModalOpen} />
     </div>
   );
