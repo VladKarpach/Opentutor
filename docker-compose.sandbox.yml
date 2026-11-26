@@ -1,0 +1,21 @@
+# Opt-in override: enable the container code sandbox.
+#
+# The Docker socket gives whoever can talk to the Docker API root-equivalent
+# access to the host, so it is not mounted by default in docker-compose.yml.
+# Add this file only when you actually want student code executed in a
+# container:
+#
+#   docker compose -f docker-compose.yml -f docker-compose.sandbox.yml up -d
+#
+# On Windows (Docker Desktop) the socket lives at a named pipe, so set this in
+# .env first:
+#
+#   DOCKER_SOCK=//./pipe/docker_engine
+#
+# Without this override, CODE_SANDBOX_BACKEND=container will report the runtime
+# as unavailable and code execution is disabled. Everything else keeps working.
+
+services:
+  api:
+    volumes:
+      - ${DOCKER_SOCK:-/var/run/docker.sock}:/var/run/docker.sock
